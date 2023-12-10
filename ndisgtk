@@ -1,0 +1,430 @@
+#!/usr/bin/python3
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+#                                                                             #
+# ndisgtk - A GTK frontend for the ndiswrapper wireless driver tool           #
+#                                                                             #
+# Copyright (C) 2005, Sam Pohlenz <retrix@internode.on.net>                   #
+# Copyright (C) 2007-2008 Julian Andres Klode <jak@jak-linux.org>             #
+#                                                                             #
+# This program is free software; you can redistribute it and/or               #
+# modify it under the terms of the GNU General Public License                 #
+# as published by the Free Software Foundation; either version 2              #
+# of the License, or (at your option) any later version.                      #
+#                                                                             #
+# This program is distributed in the hope that it will be useful,             #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of              #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               #
+# GNU General Public License for more details.                                #
+#                                                                             #
+# You should have received a copy of the GNU General Public License           #
+# along with this program; if not, write to the Free Software                 #
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. #
+#                                                                             #
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+
+import sys
+import os
+import subprocess
+import re
+import tempfile
+import shutil
+
+
+
+# Attempt to load GTK bindings
+try:
+	
+	import gi
+	gi.require_version('Gtk', '3.0')
+	gi.require_version('Gdk', '3.0')
+	gi.require_version('GObject', '2.0')
+	gi.require_version('GdkPixbuf', '2.0')
+	gi.require_version('GLib', '2.0')
+		
+	from gi.repository import Gtk, GObject, GdkPixbuf, Gdk, GLib
+	
+	
+except ImportError:
+	print("Failed to load GTK bindings. Please check your Gnome installation.")
+	sys.exit(1)
+
+# Internationalization
+import locale
+import gettext
+from gi.repository import Gtk
+
+locale.setlocale(locale.LC_ALL, "")
+gettext.bindtextdomain("ndisgtk", "/usr/share/locale")
+gettext.textdomain("ndisgtk")
+gettext.install("ndisgtk", "/usr/share/locale")
+
+# Data directory
+DATA_DIR = "/usr/share/ndisgtk"
+
+class NdisGTK:
+	"""
+	Main application class.
+	"""
+
+	def __init__(self, kde=False):
+		"""
+		Initializes the application.
+		"""
+
+		# Setup glade and signals
+		self.signals = {
+			"gtk_main_quit": Gtk.main_quit,
+			"on_install_driver_clicked": self.install_driver_open,
+			"on_remove_driver_clicked": self.remove_driver,
+			"on_driver_list_cursor_changed": self.cursor_changed,
+			"install_dialog_close": self.install_dialog_close,
+			"install_button_clicked": self.install_driver,
+			"network_button_clicked": self.config_network,
+			"help_button_clicked": self.show_help,
+			"drag_motion": self.drag_motion,
+			"drag_data_received": self.drag_data_received
+		}
+
+		self.builder = Gtk.Builder()
+		self.builder.set_translation_domain("ndisgtk")
+		self.builder.add_from_file(DATA_DIR + "/ndisgtk.glade")
+		self.builder.connect_signals(self.signals)
+
+		# Get handle to window
+		self.window = self.builder.get_object("ndiswrapper_main")
+
+		# Load icon
+		icon_theme = Gtk.IconTheme.get_default()
+		self.wifi_icon = icon_theme.load_icon('ndisgtk', 48, 0)
+		self.wifi_error_icon = icon_theme.load_icon('dialog-error', 48, 0)
+		self.window.set_icon(self.wifi_icon)
+
+		# Get handle to 'Remove Driver' button
+		self.remove_driver = self.builder.get_object("remove_driver")
+
+		# Get handle to 'Install Driver' dialog
+		self.install_dialog = self.builder.get_object("install_dialog")
+		self.install_dialog.set_transient_for(self.window)
+
+		# Get handle to file chooser
+		self.file_chooser = self.builder.get_object("filechooser")
+
+		# Enable drag-and-drop
+		#self.window.drag_dest_set(Gtk.DestDefaults.ALL, None, Gdk.DragAction.COPY)
+
+		# Setup driver list
+		self.setup_driver_list()
+
+		# Use KDE network admin?
+		self.kde = kde
+
+		Gtk.main()
+
+	def setup_driver_list(self):
+		
+		# Initialize lists
+		self.driver_list = []
+		self.driver_list_store = Gtk.ListStore(GdkPixbuf.Pixbuf, GObject.TYPE_STRING)
+		self.driver_list_widget = self.builder.get_object("driver_list")  # Assuming 'builder' is defined
+
+		# Set up columns
+		first = Gtk.TreeViewColumn("icon", Gtk.CellRendererPixbuf(), pixbuf=0)
+		second = Gtk.TreeViewColumn("desc", Gtk.CellRendererText(), markup=1)
+
+		self.driver_list_widget.append_column(first)
+		self.driver_list_widget.append_column(second)
+
+		# Set list model for widget
+		self.driver_list_widget.set_model(self.driver_list_store)
+
+		# Load the list of drivers
+		self.get_driver_list()
+
+
+	def get_driver_list(self):
+		"""
+		Gets the list of drivers from ndiswrapper.
+		"""
+		# Clear driver list
+		self.driver_list_store.clear()
+		self.driver_list = []
+
+		# Run the ndiswrapper list command
+		retcode, output = subprocess.getstatusoutput("ndiswrapper -l")
+        
+		# Ignore warnings from modprobe.
+		output_lines = [line for line in output.splitlines() if not line.startswith("WARNING: All config files need .conf")]
+		
+		output = '\n'.join(output_lines)
+
+		if "WARNING" in output:
+			self.error_dialog(_("Unable to see if hardware is present."), self.window)
+
+		if ": driver" in output or ": invalid" in output:
+			# Newer ndiswrapper versions
+			# Drivers found
+			output_lines = output.splitlines()
+
+			for i in range(0, len(output_lines)):
+				line = output_lines[i]
+				
+				if len(output_lines) > i + 1:
+					line2 = output_lines[i + 1]
+				else:
+					line2 = ""
+
+				if "present" in line2:
+					hardware_present = _("Yes")
+				else:
+					hardware_present = _("No")
+
+				# Get driver name
+				p = re.compile(".*:")  # match up to first tab
+				driver_name = p.search(line).group()[:-1].strip()  # strip trailing space
+
+				# Add to list
+				if "installed" in line:
+					self.driver_list.append(driver_name)
+					self.driver_list_store.append([self.wifi_icon,_("<b>%s</b>\nHardware present: %s") % (driver_name, hardware_present)])
+				elif "invalid" in line:
+					self.driver_list.append(driver_name)
+					self.driver_list_store.append([self.wifi_error_icon,_("<b>%s</b>\nInvalid Driver!") % driver_name])
+
+		elif "installed" in output or "Installed" in output or "invalid" in output:
+            # Drivers found
+			output_lines = output.splitlines()
+			for i in range(1, len(output_lines)):
+				line = output_lines[i]
+
+				if "hardware" in line:
+					hardware_present = _("Yes")
+				else:
+					hardware_present = _("No")
+
+				# Get driver name
+				p = re.compile(".*\\t")  # match up to first tab
+				driver_name = p.search(line).group()[:-1].strip()  # strip trailing space
+
+				# Add to list
+				if "installed" in line:
+					self.driver_list.append(driver_name)
+					self.driver_list_store.append([self.wifi_icon,_("<b>%s</b>\nHardware present: %s") % (driver_name, hardware_present)])
+				elif "invalid" in line:
+					self.driver_list.append(driver_name)
+					self.driver_list_store.append([self.wifi_icon,_("<b>%s</b>\nInvalid Driver!") % driver_name])
+				else:
+					# No drivers installed
+					pass
+
+	def drag_motion(self, widget, context, x, y, time):
+		"""
+		Called whenever a drag motion is made.
+		"""
+		context.drag_status(Gdk.DragAction.COPY, time)
+		return True
+
+	def drag_data_received(self, widget, context, x, y, selection, info, timestamp):
+		"""
+		Called when a file is dragged onto the main window.
+		"""
+
+		file = selection.get_text().strip()
+
+		if file.startswith("file://"):
+			if file.endswith(".inf"):
+				self.file_chooser.set_uri(file)
+				self.install_driver_open()
+			else:
+				self.error_dialog(_("Please drag an '.inf' file instead."), self.window)
+
+		return True
+
+	def show_help(self, *args):
+		"""
+		Displays the help window.
+		Called when the 'Help' button is clicked.
+		"""
+
+		# TODO: Implement
+		error_dialog("Help", self.window)
+
+	def config_network(self, *args):
+		"""
+		Opens the network configuration tool.
+		"""
+		# Run the command under the normal user.
+		uid = int(os.getenv("SUDO_UID", 0))
+		if uid == 0:
+			import pwd
+			user = os.getenv("USERNAME", pwd.getpwuid(0).pw_name)
+			uid = pwd.getpwnam(user).pw_uid
+		
+		if "DISPLAY" in os.environ:
+			if "XAUTHORITY" in os.environ:
+				
+				# Create a new Xauthority for running the configuration tool.
+				(xauth_fd, xauth_name) = tempfile.mkstemp('.ndisgtk', 'xauth-')
+				os.close(xauth_fd)
+				
+				realxauth=os.getenv("XAUTHORITY")
+				
+				if os.path.isfile(realxauth)==False:
+				 realxauth=os.getenv("XDG_DATA_HOME") + "/X11/" + "Xauthority"
+
+				if os.path.isfile(realxauth)==False:
+				 realxauth=os.getenv("XDG_DATA_HOME") + "/xorg/" + "Xauthority"
+
+				if os.path.isfile(realxauth)==False:
+				 realxauth=os.getenv("HOME") + "/.Xauthority"
+				
+				shutil.copyfile(realxauth, xauth_name)
+				os.chown(xauth_name, uid, -1)
+
+
+		fork = os.fork()
+		
+		if fork == 0:
+			# Set the new Xauthority, switch user and run the command
+			
+			if "DISPLAY" in os.environ:
+			  os.environ["XAUTHORITY"] = xauth_name
+			
+			os.setuid(uid)
+			
+			try:
+				if self.kde:
+					subprocess.call(["kcmshell", "kcm_knetworkconfmodule"])
+				else:
+					subprocess.call(["nm-connection-editor"])
+			except Exception as e:
+				try:
+					os._exit(e.errno)
+				except AttributeError:
+					os._exit(1)
+			os._exit(0)
+
+		GLib.child_watch_add(fork, self.on_config_network_exited, xauth_name)
+        			
+	def on_config_network_exited(self, pid, status, xauth_name=None):
+		"""Called when the network configuration has been called"""
+		errno = os.WEXITSTATUS(status)
+		if errno == 2:
+			self.error_dialog(_("Could not find a network configuration tool."))
+		elif errno:
+			print("Configuration failed:", os.strerror(errno), file=sys.stderr)
+		if xauth_name:
+			os.unlink(xauth_name)
+
+	def install_driver_open(self, *args):
+		"""
+		Opens the install driver dialog.
+		"""
+
+		self.install_dialog.show()
+
+	def install_dialog_close(self, *args):
+		"""
+		Closes the install driver dialog.
+		"""
+
+		self.install_dialog.hide()
+		return True;
+
+	def install_driver(self, *args):
+		"""
+		Installs a selected wireless driver.
+		Called when the install dialog's 'Install Driver' button is clicked.
+		"""
+
+		inf_file = self.file_chooser.get_filename()
+
+		if inf_file is None:
+			self.error_dialog(_("No file selected."), self.install_dialog)
+		elif not inf_file.lower().endswith(".inf"):
+			self.error_dialog(_("Not a valid driver .inf file."), self.install_dialog)
+		else:
+			# Attempt to install driver
+			retcode,output = subprocess.getstatusoutput("ndiswrapper -i " + inf_file)
+
+			output=str(output)
+
+			# Attempt to detect errors
+			if "already" in output:
+				# driver_name = output.split()[0]
+				self.error_dialog(_("Driver is already installed."), self.install_dialog)
+			elif retcode != 0:
+				self.error_dialog(_("Error while installing."), self.install_dialog)
+			else:
+				# Assume driver installed successfully. Set up and reload module
+				subprocess.call(["ndiswrapper", "-ma"])
+				subprocess.call(["modprobe", "-r", "ndiswrapper"])
+				
+				ret, out  = subprocess.getstatusoutput("modprobe ndiswrapper")
+				
+				if ret != 0:
+					error_text = _("Module could not be loaded. Error was:\n\n%s\n\n")
+					if "not found" in out:
+						error_text += _("Is the ndiswrapper module installed?")
+						self.error_dialog(error_text % out, self.install_dialog)
+
+				self.get_driver_list()
+				self.install_dialog_close()
+
+	def remove_driver(self, *args):
+		"""
+		Removes a driver after asking for confirmation.
+		Called when the 'Remove Driver' button is clicked.
+		"""	
+		
+		driver_count=len(self.driver_list)
+		
+		if driver_count==0:
+			self.error_dialog("List was empty",self.window)
+			return
+		
+
+		# Get the first selected driver
+		cursor = self.driver_list_widget.get_cursor()[0][0]
+		driver_name = self.driver_list[cursor]
+
+		# Get confirmation
+		confirm = Gtk.MessageDialog(parent=None, flags=0, message_type=Gtk.MessageType.WARNING,
+									buttons=Gtk.ButtonsType.YES_NO)
+		confirm.set_markup(_("Are you sure you want to remove the <b>%s</b> driver?") % driver_name)
+		result = confirm.run()
+
+		if result == Gtk.ResponseType.YES:
+			# Remove driver
+			retcode, output = subprocess.getstatusoutput("ndiswrapper -e " + driver_name)
+
+			# Reload driver list
+			self.get_driver_list()
+
+		# Destroy the confirmation dialog
+		confirm.destroy()
+
+	def cursor_changed(self, *args):
+		"""
+		Called when the currently selected driver changes.
+		"""
+
+		# Allow the 'Remove Driver' button to be clicked
+		self.remove_driver.set_sensitive(True)
+
+	def error_dialog(self, message, extra=""):
+		dialog = Gtk.MessageDialog(parent=None, flags=0, message_type=Gtk.MessageType.ERROR,buttons=Gtk.ButtonsType.OK, text=message)
+		dialog.run()
+		dialog.destroy()        
+        
+if __name__ == '__main__':
+	# Check for root privileges
+	if os.getuid() != 0:
+		error_dialog(_("Root or sudo privileges required!"))
+		sys.exit(1)
+
+	# Parse options and load GUI
+	if "--kde" in sys.argv:
+		NdisGTK(kde=True)
+	else:
+		NdisGTK()
