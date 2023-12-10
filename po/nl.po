@@ -1,0 +1,145 @@
+# Dutch translation for ndisgtk
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the ndisgtk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ndisgtk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-10-02 17:50+0200\n"
+"PO-Revision-Date: 2009-12-23 15:17+0000\n"
+"Last-Translator: cumulus007 <cumulus0007@gmail.com>\n"
+"Language-Team: Dutch <nl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-01-28 15:28+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../ndisgtk:165
+msgid "Unable to see if hardware is present."
+msgstr "Kan de hardware niet detecteren."
+
+#: ../ndisgtk:177 ../ndisgtk:200
+msgid "Yes"
+msgstr "Ja"
+
+#: ../ndisgtk:178 ../ndisgtk:201
+msgid "No"
+msgstr "Nee"
+
+#: ../ndisgtk:188 ../ndisgtk:212
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Hardware present: %s"
+msgstr ""
+"<b>%s</b>\n"
+"Hardware aanwezig: %s"
+
+#: ../ndisgtk:192 ../ndisgtk:216
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Invalid Driver!"
+msgstr ""
+"<b>%s</b>\n"
+"Onjuist stuurprogramma!"
+
+#: ../ndisgtk:241
+msgid "Please drag an '.inf' file instead."
+msgstr "Gebruik een '.inf'-bestand."
+
+#: ../ndisgtk:265
+msgid "Could not find a network configuration tool."
+msgstr "Kon geen geen netwerkinstellingshulpmiddel vinden."
+
+#: ../ndisgtk:293
+msgid "No file selected."
+msgstr "Geen bestand geselecteerd."
+
+#: ../ndisgtk:295
+msgid "Not a valid driver .inf file."
+msgstr "Geen geldig stuurprogramma in het .inf-bestand."
+
+#: ../ndisgtk:303
+msgid "Driver is already installed."
+msgstr "Stuurprogramma is reeds geïnstalleerd."
+
+#: ../ndisgtk:305
+msgid "Error while installing."
+msgstr "Fout tijdens het installeren."
+
+#: ../ndisgtk:312
+#, c-format
+msgid ""
+"Module could not be loaded. Error was:\n"
+"\n"
+"<i>%s</i>\n"
+msgstr ""
+"Module kon niet geladen worden. De fout luidt:\n"
+"<i>%s</i>\n"
+
+#: ../ndisgtk:314
+msgid "Is the ndiswrapper module installed?"
+msgstr "Is de ndiswrapper-module geïnstalleerd?"
+
+#: ../ndisgtk:332
+#, c-format
+msgid "Are you sure you want to remove the <b>%s</b> driver?"
+msgstr "Weet u zeker dat u het stuurprogramma <b>%s</b> wilt verwijderen?"
+
+#: ../ndisgtk:357
+msgid "Root or sudo privileges required!"
+msgstr "Beheerdersrechten zijn noodzakelijk!"
+
+#: ../ndisgtk.glade.h:1
+msgid "<b>Currently Installed Windows Drivers:</b>"
+msgstr "<b>Momenteel geïnstalleerde Windows-stuurprogramma's:</b>"
+
+#: ../ndisgtk.glade.h:2
+msgid "<span size=\"larger\" weight=\"bold\">Select <i>inf</i> file:</span>"
+msgstr ""
+"<span size=\"larger\" weight=\"bold\">Selecteer een <i>inf</i>-"
+"bestand:</span>"
+
+#: ../ndisgtk.glade.h:3
+msgid "Configure Network"
+msgstr "Netwerk instellen"
+
+#: ../ndisgtk.glade.h:4
+msgid "Install Driver"
+msgstr "Stuurprogramma installeren"
+
+#: ../ndisgtk.glade.h:5
+msgid "Location:"
+msgstr "Locatie:"
+
+#: ../ndisgtk.glade.h:6
+msgid "Select inf File"
+msgstr "Inf-bestand selecteren"
+
+#: ../ndisgtk.glade.h:7
+msgid "Wireless Network Drivers"
+msgstr "Draadloos netwerk-stuurprogramma's"
+
+#: ../ndisgtk.glade.h:8
+msgid "_Install"
+msgstr "_Installeren"
+
+#: ../ndisgtk.glade.h:9
+msgid "_Install New Driver"
+msgstr "Nieuw stuurprogramma _installeren"
+
+#: ../ndisgtk.glade.h:10
+msgid "_Remove Driver"
+msgstr "Stuurprogramma _verwijderen"
+
+#: ../ndisgtk-kde.desktop.in.h:1 ../ndisgtk.desktop.in.h:1
+msgid "Ndiswrapper driver installation tool"
+msgstr "Installatiehulpmiddel voor Ndiswrapper-stuurprogramma's"
+
+#: ../ndisgtk-kde.desktop.in.h:2 ../ndisgtk.desktop.in.h:2
+msgid "Windows Wireless Drivers"
+msgstr "Windows-stuurprogramma's voor draadloos"

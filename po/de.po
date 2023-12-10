@@ -1,0 +1,146 @@
+# ndisgtk package translation.
+# Copyright (C) 2005 Sam Pohlenz
+# Copyright (C) 2007 Julian Andres Klode
+# This file is distributed under the same license as the ndisgtk package.
+# Julian Andres Klode <jak@jak-linux.org>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-10-02 17:50+0200\n"
+"PO-Revision-Date: 2009-08-05 21:46+0000\n"
+"Last-Translator: Julian Andres Klode <juliank@ubuntu.com>\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-01-28 15:28+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../ndisgtk:165
+msgid "Unable to see if hardware is present."
+msgstr "Es kann nicht geprüft werden ob die Hardware vorhanden ist"
+
+#: ../ndisgtk:177 ../ndisgtk:200
+msgid "Yes"
+msgstr "Ja"
+
+#: ../ndisgtk:178 ../ndisgtk:201
+msgid "No"
+msgstr "Nein"
+
+#: ../ndisgtk:188 ../ndisgtk:212
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Hardware present: %s"
+msgstr ""
+"<b>%s</b>\n"
+"Hardware verfügbar: %s"
+
+#: ../ndisgtk:192 ../ndisgtk:216
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Invalid Driver!"
+msgstr ""
+"<b>%s</b>\n"
+"Fehlerhafter Treiber!"
+
+#: ../ndisgtk:241
+msgid "Please drag an '.inf' file instead."
+msgstr "Bitte wählen Sie eine .inf Datei"
+
+#: ../ndisgtk:265
+msgid "Could not find a network configuration tool."
+msgstr "Konnte kein Programm zur Netzwerkkonfiguration finden."
+
+#: ../ndisgtk:293
+msgid "No file selected."
+msgstr "Keine Datei ausgewählt"
+
+#: ../ndisgtk:295
+msgid "Not a valid driver .inf file."
+msgstr "Keine korrekte .inf Treiber Datei"
+
+#: ../ndisgtk:303
+msgid "Driver is already installed."
+msgstr "Treiber ist bereits installiert"
+
+#: ../ndisgtk:305
+msgid "Error while installing."
+msgstr "Fehler während der Installation"
+
+#: ../ndisgtk:312
+#, c-format
+msgid ""
+"Module could not be loaded. Error was:\n"
+"\n"
+"<i>%s</i>\n"
+msgstr ""
+"Modul konnte nicht geladen werden. Fehler war:\n"
+"\n"
+"<i>%s</i>\n"
+
+#: ../ndisgtk:314
+msgid "Is the ndiswrapper module installed?"
+msgstr "Ist das ndiswrapper Modul installiert?"
+
+#: ../ndisgtk:332
+#, c-format
+msgid "Are you sure you want to remove the <b>%s</b> driver?"
+msgstr "Möchten Sie den <b>%s</b> Treiber wirklich entfernen"
+
+#: ../ndisgtk:357
+msgid "Root or sudo privileges required!"
+msgstr "Root oder sudo Rechte erforderlich"
+
+#: ../ndisgtk.glade.h:1
+msgid "<b>Currently Installed Windows Drivers:</b>"
+msgstr "<b>Momentan installierte Windows Treiber:</b>"
+
+#: ../ndisgtk.glade.h:2
+msgid "<span size=\"larger\" weight=\"bold\">Select <i>inf</i> file:</span>"
+msgstr ""
+"<span size=\"larger\" weight=\"bold\"><i>inf</i> Datei wählen:</span>"
+
+#: ../ndisgtk.glade.h:3
+msgid "Configure Network"
+msgstr "Netzwerk konfigurieren"
+
+#: ../ndisgtk.glade.h:4
+msgid "Install Driver"
+msgstr "Treiber installieren"
+
+#: ../ndisgtk.glade.h:5
+msgid "Location:"
+msgstr "Ort"
+
+#: ../ndisgtk.glade.h:6
+msgid "Select inf File"
+msgstr "Inf Datei wählen"
+
+#: ../ndisgtk.glade.h:7
+msgid "Wireless Network Drivers"
+msgstr "WiFi Treiber"
+
+#: ../ndisgtk.glade.h:8
+msgid "_Install"
+msgstr "_Installieren"
+
+#: ../ndisgtk.glade.h:9
+msgid "_Install New Driver"
+msgstr "Neuen Treiber _installieren"
+
+#: ../ndisgtk.glade.h:10
+msgid "_Remove Driver"
+msgstr "Treiber entfe_rnen"
+
+#: ../ndisgtk-kde.desktop.in.h:1 ../ndisgtk.desktop.in.h:1
+msgid "Ndiswrapper driver installation tool"
+msgstr "Ndiswrapper Treiber Installations Programm"
+
+#: ../ndisgtk-kde.desktop.in.h:2 ../ndisgtk.desktop.in.h:2
+msgid "Windows Wireless Drivers"
+msgstr "Windows WLAN Treiber"

@@ -1,0 +1,145 @@
+# Ukrainian translation for ndisgtk
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the ndisgtk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ndisgtk\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2008-10-02 17:50+0200\n"
+"PO-Revision-Date: 2009-10-25 00:18+0000\n"
+"Last-Translator: atany <Unknown>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-01-28 15:28+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../ndisgtk:165
+msgid "Unable to see if hardware is present."
+msgstr "Неможливо перевірити присутність апаратного забезпечення."
+
+#: ../ndisgtk:177 ../ndisgtk:200
+msgid "Yes"
+msgstr "Так"
+
+#: ../ndisgtk:178 ../ndisgtk:201
+msgid "No"
+msgstr "Ні"
+
+#: ../ndisgtk:188 ../ndisgtk:212
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Hardware present: %s"
+msgstr ""
+"<b>%s</b>\n"
+"Присутнє апаратне забезпечення: %s"
+
+#: ../ndisgtk:192 ../ndisgtk:216
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Invalid Driver!"
+msgstr ""
+"<b>%s</b>\n"
+"Неправильний драйвер!"
+
+#: ../ndisgtk:241
+msgid "Please drag an '.inf' file instead."
+msgstr "Будь ласка, замість цього перетягніть файл \".inf\""
+
+#: ../ndisgtk:265
+msgid "Could not find a network configuration tool."
+msgstr "Не вдалося знайти інструмент настройки мережі."
+
+#: ../ndisgtk:293
+msgid "No file selected."
+msgstr "Не вибрано жодного файла"
+
+#: ../ndisgtk:295
+msgid "Not a valid driver .inf file."
+msgstr "Неправильний файл драйвера inf."
+
+#: ../ndisgtk:303
+msgid "Driver is already installed."
+msgstr "Драйвер вже встановлено."
+
+#: ../ndisgtk:305
+msgid "Error while installing."
+msgstr "Помилка при встановленні."
+
+#: ../ndisgtk:312
+#, c-format
+msgid ""
+"Module could not be loaded. Error was:\n"
+"\n"
+"<i>%s</i>\n"
+msgstr ""
+"Модуль не вдалося завантажити. Помилка:\n"
+"\n"
+"<i>%s</i>\n"
+
+#: ../ndisgtk:314
+msgid "Is the ndiswrapper module installed?"
+msgstr "Чи встановлено модуль ndiswrapper?"
+
+#: ../ndisgtk:332
+#, c-format
+msgid "Are you sure you want to remove the <b>%s</b> driver?"
+msgstr "Ви дійсно бажаєте видалити драйвер <b>%s</b>?"
+
+#: ../ndisgtk:357
+msgid "Root or sudo privileges required!"
+msgstr "Потрібні привілегії root або sudo!"
+
+#: ../ndisgtk.glade.h:1
+msgid "<b>Currently Installed Windows Drivers:</b>"
+msgstr "<b>Вже встановлені драйвери Windows:</b>"
+
+#: ../ndisgtk.glade.h:2
+msgid "<span size=\"larger\" weight=\"bold\">Select <i>inf</i> file:</span>"
+msgstr ""
+"<span size=\"larger\" weight=\"bold\">Виберіть <i>inf</i> файл:</span>"
+
+#: ../ndisgtk.glade.h:3
+msgid "Configure Network"
+msgstr "Налаштувати мережу"
+
+#: ../ndisgtk.glade.h:4
+msgid "Install Driver"
+msgstr "Встановити драйвер"
+
+#: ../ndisgtk.glade.h:5
+msgid "Location:"
+msgstr "Розташування:"
+
+#: ../ndisgtk.glade.h:6
+msgid "Select inf File"
+msgstr "Виберіть файл inf"
+
+#: ../ndisgtk.glade.h:7
+msgid "Wireless Network Drivers"
+msgstr "Драйвери безпровідної мережі"
+
+#: ../ndisgtk.glade.h:8
+msgid "_Install"
+msgstr "_Встановити"
+
+#: ../ndisgtk.glade.h:9
+msgid "_Install New Driver"
+msgstr "Встановити _новий драйвер"
+
+#: ../ndisgtk.glade.h:10
+msgid "_Remove Driver"
+msgstr "Ви_далити драйвер"
+
+#: ../ndisgtk-kde.desktop.in.h:1 ../ndisgtk.desktop.in.h:1
+msgid "Ndiswrapper driver installation tool"
+msgstr "Інструмент встановлення драйверів Ndiswrapper"
+
+#: ../ndisgtk-kde.desktop.in.h:2 ../ndisgtk.desktop.in.h:2
+msgid "Windows Wireless Drivers"
+msgstr "Безпровідні драйвери Windows"

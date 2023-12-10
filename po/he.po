@@ -1,0 +1,144 @@
+# Hebrew translation for ndisgtk
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the ndisgtk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ndisgtk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-10-02 17:50+0200\n"
+"PO-Revision-Date: 2009-09-28 23:08+0000\n"
+"Last-Translator: Yaron <sh.yaron@gmail.com>\n"
+"Language-Team: Hebrew <he@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-01-28 15:28+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../ndisgtk:165
+msgid "Unable to see if hardware is present."
+msgstr "לא ניתן ליראות אם החומרה נוכחת"
+
+#: ../ndisgtk:177 ../ndisgtk:200
+msgid "Yes"
+msgstr "כן"
+
+#: ../ndisgtk:178 ../ndisgtk:201
+msgid "No"
+msgstr "לא"
+
+#: ../ndisgtk:188 ../ndisgtk:212
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Hardware present: %s"
+msgstr ""
+"<b>%s</b>\n"
+"חומרה נוכחת: %s"
+
+#: ../ndisgtk:192 ../ndisgtk:216
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Invalid Driver!"
+msgstr ""
+"<b>%s</b>\n"
+"דרייבר לא תקין!"
+
+#: ../ndisgtk:241
+msgid "Please drag an '.inf' file instead."
+msgstr "אנא בחרו קובץ '.inf' במקום"
+
+#: ../ndisgtk:265
+msgid "Could not find a network configuration tool."
+msgstr "לא ניתן לאתר את כלי תצורת הרשת."
+
+#: ../ndisgtk:293
+msgid "No file selected."
+msgstr "לא נבחרו קבצים"
+
+#: ../ndisgtk:295
+msgid "Not a valid driver .inf file."
+msgstr "הדרייבר בתוך קובץ ה-.inf לא תקין"
+
+#: ../ndisgtk:303
+msgid "Driver is already installed."
+msgstr "מנהל ההתקן כבר מותקן."
+
+#: ../ndisgtk:305
+msgid "Error while installing."
+msgstr "ארעה שגיאה בזמן ההתקנה."
+
+#: ../ndisgtk:312
+#, c-format
+msgid ""
+"Module could not be loaded. Error was:\n"
+"\n"
+"<i>%s</i>\n"
+msgstr ""
+"טעינת המודול אינה אפשרית. השגיאה היתה:\n"
+"\n"
+"<i>%s</i>\n"
+
+#: ../ndisgtk:314
+msgid "Is the ndiswrapper module installed?"
+msgstr "האם מודול ה־ndiswrapper מותקן?"
+
+#: ../ndisgtk:332
+#, c-format
+msgid "Are you sure you want to remove the <b>%s</b> driver?"
+msgstr "אתם בטוחים שאתם רוצים להסיר את הדרייבר <b>%s</b>?"
+
+#: ../ndisgtk:357
+msgid "Root or sudo privileges required!"
+msgstr "נידרשות הרשאות Root או Sudo"
+
+#: ../ndisgtk.glade.h:1
+msgid "<b>Currently Installed Windows Drivers:</b>"
+msgstr "<b>דרייברים שכרגע מותקנים:</b>"
+
+#: ../ndisgtk.glade.h:2
+msgid "<span size=\"larger\" weight=\"bold\">Select <i>inf</i> file:</span>"
+msgstr "<span size=\"larger\" weight=\"bold\">בחירת קובץ <i>inf</i>:</span>"
+
+#: ../ndisgtk.glade.h:3
+msgid "Configure Network"
+msgstr "הגדרות רשת"
+
+#: ../ndisgtk.glade.h:4
+msgid "Install Driver"
+msgstr "התקנת דרייבר"
+
+#: ../ndisgtk.glade.h:5
+msgid "Location:"
+msgstr "מיקום:‏"
+
+#: ../ndisgtk.glade.h:6
+msgid "Select inf File"
+msgstr "בחירת קובץ inf"
+
+#: ../ndisgtk.glade.h:7
+msgid "Wireless Network Drivers"
+msgstr "דרייברים לרשת אל חוטית"
+
+#: ../ndisgtk.glade.h:8
+msgid "_Install"
+msgstr "_התקנה"
+
+#: ../ndisgtk.glade.h:9
+msgid "_Install New Driver"
+msgstr "_התקנת דרייבר חדש"
+
+#: ../ndisgtk.glade.h:10
+msgid "_Remove Driver"
+msgstr "_הסרת דרייבר"
+
+#: ../ndisgtk-kde.desktop.in.h:1 ../ndisgtk.desktop.in.h:1
+msgid "Ndiswrapper driver installation tool"
+msgstr "Ndiswrapper כלי התקנת דרייבר"
+
+#: ../ndisgtk-kde.desktop.in.h:2 ../ndisgtk.desktop.in.h:2
+msgid "Windows Wireless Drivers"
+msgstr "דרייברים אלחוטיים של וינדוס"

@@ -1,0 +1,146 @@
+# Hungarian translation for ndisgtk
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the ndisgtk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ndisgtk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-10-02 17:50+0200\n"
+"PO-Revision-Date: 2009-08-06 04:36+0000\n"
+"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-01-28 15:28+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../ndisgtk:165
+msgid "Unable to see if hardware is present."
+msgstr "A hardver jelenléte nem érzékelhető."
+
+#: ../ndisgtk:177 ../ndisgtk:200
+msgid "Yes"
+msgstr "Igen"
+
+#: ../ndisgtk:178 ../ndisgtk:201
+msgid "No"
+msgstr "Nem"
+
+#: ../ndisgtk:188 ../ndisgtk:212
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Hardware present: %s"
+msgstr ""
+"<b>%s</b>\n"
+"Jelenlévő hardver: %s"
+
+#: ../ndisgtk:192 ../ndisgtk:216
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Invalid Driver!"
+msgstr ""
+"<b>%s</b>\n"
+"Érvénytelen illesztőprogram!"
+
+#: ../ndisgtk:241
+msgid "Please drag an '.inf' file instead."
+msgstr "Ehelyett egy .inf fájlt válasszon."
+
+#: ../ndisgtk:265
+msgid "Could not find a network configuration tool."
+msgstr "Nen található hálózatbeállító eszköz."
+
+#: ../ndisgtk:293
+msgid "No file selected."
+msgstr "Nincs fájl kiválasztva."
+
+#: ../ndisgtk:295
+msgid "Not a valid driver .inf file."
+msgstr "Nem érvényes .inf fájl."
+
+#: ../ndisgtk:303
+msgid "Driver is already installed."
+msgstr "Az illesztőprogram már telepítve van."
+
+#: ../ndisgtk:305
+msgid "Error while installing."
+msgstr "Hiba a telepítés közben."
+
+#: ../ndisgtk:312
+#, c-format
+msgid ""
+"Module could not be loaded. Error was:\n"
+"\n"
+"<i>%s</i>\n"
+msgstr ""
+"A modul nem tölthető be. A hibaüzenet:\n"
+"\n"
+"<i>%s</i>\n"
+
+#: ../ndisgtk:314
+msgid "Is the ndiswrapper module installed?"
+msgstr "Az ndiswrapper modul telepítve van?"
+
+#: ../ndisgtk:332
+#, c-format
+msgid "Are you sure you want to remove the <b>%s</b> driver?"
+msgstr ""
+"Biztos hogy el akarja távolítani a következő illesztőprogramot: <b>%s</b>?"
+
+#: ../ndisgtk:357
+msgid "Root or sudo privileges required!"
+msgstr "Rendszergazdai jogok szükségesek!"
+
+#: ../ndisgtk.glade.h:1
+msgid "<b>Currently Installed Windows Drivers:</b>"
+msgstr "<b>Jelenleg telepített Windows illesztőprogramok:</b>"
+
+#: ../ndisgtk.glade.h:2
+msgid "<span size=\"larger\" weight=\"bold\">Select <i>inf</i> file:</span>"
+msgstr ""
+"<span size=\"larger\" weight=\"bold\"><i>inf</i> fájl választása:</span>"
+
+#: ../ndisgtk.glade.h:3
+msgid "Configure Network"
+msgstr "Hálózat beállítás"
+
+#: ../ndisgtk.glade.h:4
+msgid "Install Driver"
+msgstr "Illesztőprogram telepítés"
+
+#: ../ndisgtk.glade.h:5
+msgid "Location:"
+msgstr "Hely:"
+
+#: ../ndisgtk.glade.h:6
+msgid "Select inf File"
+msgstr "inf fájl választása"
+
+#: ../ndisgtk.glade.h:7
+msgid "Wireless Network Drivers"
+msgstr "Vezetéknélküli hálózat illesztőprogramok"
+
+#: ../ndisgtk.glade.h:8
+msgid "_Install"
+msgstr "_Telepítés"
+
+#: ../ndisgtk.glade.h:9
+msgid "_Install New Driver"
+msgstr "_Új illesztőprogram telepítése"
+
+#: ../ndisgtk.glade.h:10
+msgid "_Remove Driver"
+msgstr "_Illesztőprogram eltávolítása"
+
+#: ../ndisgtk-kde.desktop.in.h:1 ../ndisgtk.desktop.in.h:1
+msgid "Ndiswrapper driver installation tool"
+msgstr "Ndiswrapper illesztőprogram telepítő eszköz"
+
+#: ../ndisgtk-kde.desktop.in.h:2 ../ndisgtk.desktop.in.h:2
+msgid "Windows Wireless Drivers"
+msgstr "Windowsos vezeték nélküli meghajtók"

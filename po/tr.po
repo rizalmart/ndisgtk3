@@ -1,0 +1,142 @@
+# Turkish translation for ndisgtk
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the ndisgtk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ndisgtk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-10-02 17:50+0200\n"
+"PO-Revision-Date: 2009-10-17 12:43+0000\n"
+"Last-Translator: celil aydin <Unknown>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-01-28 15:28+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../ndisgtk:165
+msgid "Unable to see if hardware is present."
+msgstr "Eğer donanım yoksa tanımlanamaz."
+
+#: ../ndisgtk:177 ../ndisgtk:200
+msgid "Yes"
+msgstr "Evet"
+
+#: ../ndisgtk:178 ../ndisgtk:201
+msgid "No"
+msgstr "Hayır"
+
+#: ../ndisgtk:188 ../ndisgtk:212
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Hardware present: %s"
+msgstr ""
+"<b>%s</b>\n"
+"Donanım hazır: %s"
+
+#: ../ndisgtk:192 ../ndisgtk:216
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Invalid Driver!"
+msgstr ""
+"<b>%s</b>\n"
+"Geçersiz Sürücü!"
+
+#: ../ndisgtk:241
+msgid "Please drag an '.inf' file instead."
+msgstr "Lütfen '.inf' dosyası seçin."
+
+#: ../ndisgtk:265
+msgid "Could not find a network configuration tool."
+msgstr ""
+
+#: ../ndisgtk:293
+msgid "No file selected."
+msgstr "Dosya seçilmedi."
+
+#: ../ndisgtk:295
+msgid "Not a valid driver .inf file."
+msgstr "Geçerli bir '.inf' dosyası değil."
+
+#: ../ndisgtk:303
+msgid "Driver is already installed."
+msgstr "Sürücü zaten kurulu."
+
+#: ../ndisgtk:305
+msgid "Error while installing."
+msgstr "Kurulum sırasında hata."
+
+#: ../ndisgtk:312
+#, c-format
+msgid ""
+"Module could not be loaded. Error was:\n"
+"\n"
+"<i>%s</i>\n"
+msgstr ""
+
+#: ../ndisgtk:314
+msgid "Is the ndiswrapper module installed?"
+msgstr ""
+
+#: ../ndisgtk:332
+#, c-format
+msgid "Are you sure you want to remove the <b>%s</b> driver?"
+msgstr "<b>%s</b> sürücüsünü kaldırmak istediğinden emin misin?"
+
+#: ../ndisgtk:357
+msgid "Root or sudo privileges required!"
+msgstr "Yönetici hakları gerekli!"
+
+#: ../ndisgtk.glade.h:1
+msgid "<b>Currently Installed Windows Drivers:</b>"
+msgstr "Kurulu Windows sürücüleri:"
+
+#: ../ndisgtk.glade.h:2
+msgid "<span size=\"larger\" weight=\"bold\">Select <i>inf</i> file:</span>"
+msgstr ""
+"<span size=\"larger\" weight=\"bold\"> <i>inf</i> dosyasını seç:</span>"
+
+#: ../ndisgtk.glade.h:3
+msgid "Configure Network"
+msgstr "Ağı Yapılandır"
+
+#: ../ndisgtk.glade.h:4
+msgid "Install Driver"
+msgstr "Sürücü kur"
+
+#: ../ndisgtk.glade.h:5
+msgid "Location:"
+msgstr "Konum:"
+
+#: ../ndisgtk.glade.h:6
+msgid "Select inf File"
+msgstr "İnf dosyasını seç"
+
+#: ../ndisgtk.glade.h:7
+msgid "Wireless Network Drivers"
+msgstr "Kablosuz ağ sürücüleri"
+
+#: ../ndisgtk.glade.h:8
+msgid "_Install"
+msgstr "_Yükle"
+
+#: ../ndisgtk.glade.h:9
+msgid "_Install New Driver"
+msgstr "_Yeni sürücü kur"
+
+#: ../ndisgtk.glade.h:10
+msgid "_Remove Driver"
+msgstr "_Sürücü kaldır"
+
+#: ../ndisgtk-kde.desktop.in.h:1 ../ndisgtk.desktop.in.h:1
+msgid "Ndiswrapper driver installation tool"
+msgstr "NDiswrapper sürücü kurulum aracı"
+
+#: ../ndisgtk-kde.desktop.in.h:2 ../ndisgtk.desktop.in.h:2
+msgid "Windows Wireless Drivers"
+msgstr "Windows Kablosuz Ağ Sürücüleri"
