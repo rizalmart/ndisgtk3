@@ -268,15 +268,18 @@ class NdisGTK:
 				os.close(xauth_fd)
 				
 				realxauth=os.getenv("XAUTHORITY")
+
+				if os.path.isfile(realxauth)==False:
+				 realxauth=os.getenv("HOME") + "/.config/Xauthority"
 				
 				if os.path.isfile(realxauth)==False:
-				 realxauth=os.getenv("XDG_DATA_HOME") + "/X11/" + "Xauthority"
+				 realxauth=os.getenv("HOME") + "/.config/X11/Xauthority"
 
 				if os.path.isfile(realxauth)==False:
-				 realxauth=os.getenv("XDG_DATA_HOME") + "/xorg/" + "Xauthority"
+				 realxauth=os.getenv("HOME") + "/.config/xorg/Xauthority"
 
 				if os.path.isfile(realxauth)==False:
-				 realxauth=os.getenv("HOME") + "/.Xauthority"
+				 realxauth=os.getenv("HOME") + "/.config/.Xauthority"
 				
 				shutil.copyfile(realxauth, xauth_name)
 				os.chown(xauth_name, uid, -1)
@@ -288,7 +291,8 @@ class NdisGTK:
 			# Set the new Xauthority, switch user and run the command
 			
 			if "DISPLAY" in os.environ:
-			  os.environ["XAUTHORITY"] = xauth_name
+				if len(xauth_name)>0:	
+					os.environ["XAUTHORITY"] = xauth_name
 			
 			os.setuid(uid)
 			
